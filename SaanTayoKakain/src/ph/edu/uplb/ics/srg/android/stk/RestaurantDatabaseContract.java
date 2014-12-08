@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014 University of the Philippines Los Banos
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0
+ * which accompanies this distribution, and is available at 
+ * https://www.apache.org/licenses/LICENSE-2.0.html
+ *
+ * Contributors:
+ *     Joseph Anthony C. Hermocilla (jchermocilla@up.edu.ph)
+ *******************************************************************************/
 package ph.edu.uplb.ics.srg.android.stk;
 
 import android.provider.BaseColumns;
