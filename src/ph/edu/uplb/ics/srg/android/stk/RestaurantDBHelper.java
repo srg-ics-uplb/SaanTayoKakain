@@ -33,6 +33,4 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         db.execSQL(RestaurantEntry.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
-    
-
 }

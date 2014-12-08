@@ -50,27 +50,20 @@ public class AddRestaurantActivity extends Activity {
    	 
    	 
     	// Gets the data repository in write mode
-    	 SQLiteDatabase db = dbHelper.getWritableDatabase();
+    	SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-    	 // Create a new map of values, where column names are the keys
-    	 ContentValues values = new ContentValues();
-    	 values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,restoNameText.getText().toString());
-    	 values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,restoTagsText.getText().toString());
-    	 values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED,"no");
+    	// Create a new map of values, where column names are the keys
+    	ContentValues values = new ContentValues();
+    	values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,restoNameText.getText().toString());
+    	values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,restoTagsText.getText().toString());
+    	values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED,"no");
 
-    	 // Insert the new row, returning the primary key value of the new row
-    	 long newRowId;
-    	 newRowId = db.insert(
+    	// Insert the new row, returning the primary key value of the new row
+    	db.insert(
     	          RestaurantEntry.TABLE_NAME,
     	          null,
     	          values);
     	
     	finish();
-    	/*
-    	builder.setMessage(restoNameText.getText().toString()+ " added")
-    	       .setTitle("Saan tayo kakain?");
-    	AlertDialog dialog = builder.create();
-    	dialog.show();
-    	*/
     }
 }

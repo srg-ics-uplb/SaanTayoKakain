@@ -27,8 +27,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {   
+    public void onCreate(Bundle savedInstanceState){   
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         TextView t2 = (TextView) findViewById(R.id.site);
@@ -37,10 +36,7 @@ public class MainActivity extends Activity {
 
     public void getRecommendation(View view){
     	RestaurantDBHelper dbHelper = new RestaurantDBHelper(getApplicationContext());
-   	 
-   	 //Gets the data repository in write mode
-	    SQLiteDatabase db = dbHelper.getWritableDatabase();
-	    db = dbHelper.getReadableDatabase();
+    	SQLiteDatabase db = dbHelper.getReadableDatabase();
 	    
 	    EditText tagFilter = (EditText)findViewById(R.id.tagFilter);
 	    String filter = tagFilter.getText().toString();
@@ -49,8 +45,7 @@ public class MainActivity extends Activity {
     			new String[] { RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,
     				RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS },
     				"("+ RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED+"='no'"+ ") AND (" + RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS+" LIKE '%"+ filter  + "%' ) ORDER BY RANDOM() LIMIT 1" , null, null, null, null);
-    	    	// 
-    	
+
     	if (c.getCount()==0){
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
         	builder.setMessage("Nakainan mo na ata lahat o walang resto sa listahan na may ganyan!Reset mo status o mag add ka ng resto.")
@@ -60,7 +55,6 @@ public class MainActivity extends Activity {
         	return;
     	}
     		
-    	
     	c.moveToFirst();
     	String suggestion=c.getString(c.getColumnIndexOrThrow(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME));
     	String tags= c.getString(c.getColumnIndexOrThrow(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS));
@@ -77,23 +71,14 @@ public class MainActivity extends Activity {
     	
     }
     
-    public void addRestaurant(View view){
-    	    	  	
+    public void addRestaurant(View view){    	    	  	
     	Intent intent = new Intent(this, AddRestaurantActivity.class);
-        startActivity(intent);
-    	
+        startActivity(intent);    	
     }
     
     public void viewAllRestaurants(View view){
     	Intent intent = new Intent(this, ViewRestaurantsActivity.class);
         startActivity(intent);    	
-    	/*
-    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    	builder.setMessage("View all restaurants.")
-    	       .setTitle("Saan tayo kakain?");
-    	AlertDialog dialog = builder.create();
-    	dialog.show();
-    	*/
     }
     
     public void resetStatus(View view)
@@ -103,14 +88,11 @@ public class MainActivity extends Activity {
    	    ContentValues values = new ContentValues();
    	    values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
    	    db.update(RestaurantEntry.TABLE_NAME, values, null, null);
-    	
     }
     
     public void clearSourceList(View view){
     	RestaurantDBHelper dbHelper = new RestaurantDBHelper(getApplicationContext());
-   	 	 
-    	// Gets the data repository in write mode
-    	 SQLiteDatabase db = dbHelper.getWritableDatabase();
+     	SQLiteDatabase db = dbHelper.getWritableDatabase();
     	db.delete("restaurant", null, null);
     }
     
