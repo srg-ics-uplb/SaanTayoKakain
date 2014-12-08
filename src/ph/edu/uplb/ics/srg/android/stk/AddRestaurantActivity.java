@@ -37,6 +37,14 @@ public class AddRestaurantActivity extends Activity {
     	EditText restoNameText = (EditText)findViewById(R.id.restoName);
     	EditText restoTagsText = (EditText)findViewById(R.id.restoTags);
     	
+    	String restoName = restoNameText.getText().toString();
+    	
+    	if (restoName.trim().length()==0)
+    	{
+    		finish();
+    		return;
+    	}
+    	
     	
     	RestaurantDBHelper dbHelper = new RestaurantDBHelper(getApplicationContext());
    	 
