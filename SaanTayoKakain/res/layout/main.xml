@@ -4,10 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView 
+<TextView
+    android:id="@+id/site" 
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Brought to you by the people from http://srg.ics.uplb.edu.ph"
+    android:text="@string/url"
     />
 
 <EditText
