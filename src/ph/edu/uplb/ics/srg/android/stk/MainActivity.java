@@ -221,43 +221,43 @@ public class MainActivity extends Activity {
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Danielas");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local,lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Bugong");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,chicken");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,chicken,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Cels");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local,lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Kens");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local,lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Aling Glo");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,
 				"Ellens Crossing");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay,chicken");
+				"local,lutong-bahay,chicken,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Cadapans");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, chicken, lutong-bahay");
+				"local,chicken,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -268,25 +268,25 @@ public class MainActivity extends Activity {
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "SU");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Coop");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Melville");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, silog, lutong-bahay");
+				"local,silog,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Eatsumo");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, japanese");
+				"local,japanese");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -297,24 +297,24 @@ public class MainActivity extends Activity {
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "TessAndYlloy");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Papus");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, siomai");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,siomai,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Sizzlers");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Parduch");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -325,23 +325,23 @@ public class MainActivity extends Activity {
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Tita Cora");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Sulyaw");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
-				"local, lutong-bahay");
+				"local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Petrinos");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, silog");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,silog,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "OddBalls");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, silog");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,silog,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -352,7 +352,7 @@ public class MainActivity extends Activity {
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "BlackAndBrew");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,pasta");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -362,27 +362,27 @@ public class MainActivity extends Activity {
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Selenas");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, lutong-bahay");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,lutong-bahay,tipid");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Makiling Cafe");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, lutong-bahay");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,lutong-bahay");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Auntie Pearls");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta, pizza");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,pasta,pizza");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Herb Republic");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, vegetarian");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,vegetarian");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Dalcielo");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,pasta");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 		
