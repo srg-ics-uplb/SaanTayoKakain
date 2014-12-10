@@ -22,6 +22,7 @@ import ph.edu.uplb.ics.srg.android.stk.RestaurantDatabaseContract.RestaurantEntr
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -32,6 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class MainActivity extends Activity {
 		}
 
 		c.moveToFirst();
-		String suggestion = c
+		final String suggestion = c
 				.getString(c
 						.getColumnIndexOrThrow(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME));
 		String tags = c
@@ -77,18 +79,38 @@ public class MainActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(
 				"Eh di sa " + suggestion + "!" + "\n" + "Tags: " + tags)
-				.setTitle("Saan tayo kakain?");
+				.setTitle("Saan tayo kakain?")
+				.setPositiveButton("Confirm",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								RestaurantDBHelper dbHelper = new RestaurantDBHelper(
+										getApplicationContext());
+								SQLiteDatabase db = dbHelper
+										.getWritableDatabase();
+								ContentValues values = new ContentValues();
+								values.put(
+										RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED,
+										"yes");
+								db.update(
+										RestaurantEntry.TABLE_NAME,
+										values,
+										RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME
+												+ "='" + suggestion + "'", null);
+								db.close();
+							}
+						})
+				.setNegativeButton("Next time",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								return;
+							}
+						});
 		AlertDialog dialog = builder.create();
 		dialog.show();
-
-		db = dbHelper.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "yes");
-		db.update(RestaurantEntry.TABLE_NAME, values,
-				RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME + "='" + suggestion
-						+ "'", null);
-
-		db.close();
 	}
 
 	public void addRestaurant(View view) {
@@ -104,7 +126,7 @@ public class MainActivity extends Activity {
 	public void resetStatus(View view) {
 		RestaurantDBHelper dbHelper = new RestaurantDBHelper(
 				getApplicationContext());
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.update(RestaurantEntry.TABLE_NAME, values, null, null);
@@ -114,69 +136,81 @@ public class MainActivity extends Activity {
 	public void clearSourceList(View view) {
 		RestaurantDBHelper dbHelper = new RestaurantDBHelper(
 				getApplicationContext());
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		db.delete("restaurant", null, null);
+		db.close();
 	}
 
 	public void loadLBRestos(View view) {
 		RestaurantDBHelper dbHelper = new RestaurantDBHelper(
 				getApplicationContext());
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
 		db.execSQL(RestaurantEntry.SQL_DELETE_ENTRIES);
 		db.execSQL(RestaurantEntry.SQL_CREATE_ENTRIES);
 
 		ContentValues values = new ContentValues();
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "McDo");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,burger");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,burger");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Chowking");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,noodles,chinese");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,noodles,chinese");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "KFC");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,burger");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,burger");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,
 				"Jollibee (Centro)");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,burger");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,burger");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,
 				"Jollibee (Junction)");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,burger");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,burger");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME,
 				"Jollibee (Olivarez)");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,burger");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,burger");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Greenwich");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,pizza");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,pizza");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Pizza Hut");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "fastfood,pizza");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"fastfood,pizza");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Bonitos");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,pasta,burger,class");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"local,pasta,burger,class");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Faustinas");
-		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,pasta,burger,class");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS,
+				"local,pasta,burger,class");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
 
@@ -321,5 +355,37 @@ public class MainActivity extends Activity {
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta");
 		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
 		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "BaanThai");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local,thai");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Selenas");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, lutong-bahay");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Makiling Cafe");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, lutong-bahay");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Auntie Pearls");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta, pizza");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Herb Republic");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, vegetarian");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_NAME, "Dalcielo");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_TAGS, "local, pasta");
+		values.put(RestaurantEntry.COLUMN_NAME_RESTAURANT_VISITED, "no");
+		db.insert(RestaurantEntry.TABLE_NAME, null, values);
+		
+		db.close();
 	}
 }
